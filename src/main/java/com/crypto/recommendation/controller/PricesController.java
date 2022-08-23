@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/prices")
+@RequestMapping("/recommendation-service")
 public class PricesController {
 
     @Autowired
     PriceRepository priceRepository;
 
-    @GetMapping("/normalRange")
+    @GetMapping("/normal-range")
     public ResponseEntity<List<String>> normalizedRange (){
         List<String> totalSalary = priceRepository.findNormalizedRange();
         return new ResponseEntity<>(totalSalary, HttpStatus.OK);
@@ -32,7 +32,7 @@ public class PricesController {
         return new ResponseEntity<>(monthlyStatsList, HttpStatus.OK);
     }
 
-    @GetMapping("/name/{crypto}")
+    @GetMapping("/crypto/{crypto}")
     public ResponseEntity<List<String>> monthlyStats(@PathVariable String crypto){
         List<String> monthlyStatsList = priceRepository.getMonthlyStatsByCrypto(crypto);
         return new ResponseEntity<>(monthlyStatsList, HttpStatus.OK);
