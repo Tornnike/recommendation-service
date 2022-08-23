@@ -24,7 +24,6 @@ public class CsvHelper {
                 || file.getContentType().equals("application/vnd.ms-excel")) {
             return true;
         }
-
         return false;
     }
 
@@ -32,9 +31,7 @@ public class CsvHelper {
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
              CSVParser csvParser = new CSVParser(fileReader,
                      CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
-
             List<Prices> pricesList = new ArrayList<>();
-
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
             for (CSVRecord csvRecord : csvRecords) {
                 Prices prices = new Prices(

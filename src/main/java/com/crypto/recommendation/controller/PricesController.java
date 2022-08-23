@@ -20,7 +20,6 @@ public class PricesController {
     @Autowired
     PriceRepository priceRepository;
 
-
     @GetMapping("/normalRange")
     public ResponseEntity<List<String>> normalizedRange (){
         List<String> totalSalary = priceRepository.findNormalizedRange();
@@ -38,7 +37,4 @@ public class PricesController {
         List<String> monthlyStatsList = priceRepository.getMonthlyStatsByCrypto(crypto);
         return new ResponseEntity<>(monthlyStatsList, HttpStatus.OK);
     }
-
-
-
 }

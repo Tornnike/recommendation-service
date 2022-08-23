@@ -12,7 +12,6 @@ public interface PriceRepository extends JpaRepository<Prices, Long> {
     @Query(value = "select symbol, (MAX(price)-MIN(price))/MIN(price) as price from prices group by symbol", nativeQuery = true)
     public List<String> findNormalizedRange();
 
-
     @Query(value="select symbol, MAX(price) as MaxPrice, MIN(price) as MinPrice, MAX(timestamp) as Newest,\n" +
             "MIN(timestamp) oldest, MONTH(timestamp) as Month\n" +
             " from prices\n" +
@@ -20,13 +19,11 @@ public interface PriceRepository extends JpaRepository<Prices, Long> {
             "group by symbol, month(timestamp)", nativeQuery = true)
     List<String> getMonthlyStats(int currentMonthNumber);
 
-
     @Query(value="select symbol, MAX(price) as MaxPrice, MIN(price) as MinPrice, MAX(timestamp) as Newest,\n" +
             "MIN(timestamp) oldest\n" +
             " from prices\n" +
             " where symbol = ?1\n" +
             "group by symbol", nativeQuery = true)
     List<String> getMonthlyStatsByCrypto(String cryptoName);
-
 
 }
