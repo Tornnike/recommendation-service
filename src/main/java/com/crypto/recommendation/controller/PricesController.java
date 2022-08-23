@@ -22,8 +22,8 @@ public class PricesController {
 
     @GetMapping("/normal-range")
     public ResponseEntity<List<String>> normalizedRange (){
-        List<String> totalSalary = priceRepository.findNormalizedRange();
-        return new ResponseEntity<>(totalSalary, HttpStatus.OK);
+        List<String> prices = priceRepository.findNormalizedRange();
+        return new ResponseEntity<>(prices, HttpStatus.OK);
     }
 
     @GetMapping("/monthly/{month}")
